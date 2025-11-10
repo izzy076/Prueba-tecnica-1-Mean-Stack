@@ -1,11 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-/* importar tipografías */
-/* variables de css -> Paleta de colores */
-/* condiciones inicales (opcional) */
-
 @import url('https://fonts.cdnfonts.com/css/poppins');
 
-/* variables de css */
 
 :root {
     --primary-color: #D63384;

@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-// 1. Importar la clase del componente y agregarlo a los imports
-import { Navbar } from '../../components/navbar/navbar';
-import { Card } from "../../components/card/card";
+import { EmployeeService } from '../../services/employees';
+import { Employee } from '../../interfaces/employee';
+import { DepartmentService } from '../../services/departments';
+import { Department } from '../../interfaces/department';
+import { RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
-  imports: [Navbar, Card],
+  imports: [RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

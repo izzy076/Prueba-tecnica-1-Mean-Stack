@@ -1,36 +1,29 @@
 import { Injectable, inject} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../interfaces/user';
+import { Employee} from '../interfaces/employee';
 import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class EmployeeService{
   private _httpClient = inject(HttpClient);
   private apiUrl = environment.appUrl;
 
-  // métodos para hacer las peticiones
-
-  // Método POST
-  // User: la estructura que debe tener al momento de enviar la petición de crear el usuario
-  postUser(userToCreate : User){
-    return this._httpClient.post(`${this.apiUrl}/users`, userToCreate);
+  postEmployee(employeeToCreate:Employee){
+    return this._httpClient.post(`${this.apiUrl}/employees`,employeeToCreate);
   }
   
-  // Método GET
-  getUser(){
-    return this._httpClient.get(`${this.apiUrl}/users`);
+  getEmployee(){
+    return this._httpClient.get(`${this.apiUrl}/employees`);
   }
 
-  // Método PUT
-  putUser(userToUpdate : User, id:string){
-    return this._httpClient.put(`${this.apiUrl}/users/${id}`, userToUpdate);
+  putEmployee(employeeToCreate : Employee, id:string){
+    return this._httpClient.put(`${this.apiUrl}/employees/${id}`,employeeToCreate);
   }
 
-  // Método DELETE
-  deleteUser(id:string){
-    return this._httpClient.delete(`${this.apiUrl}/users/${id}`);
+  deleteEmployee(id:string){
+    return this._httpClient.delete(`${this.apiUrl}/employees/${id}`);
   }
   
 }

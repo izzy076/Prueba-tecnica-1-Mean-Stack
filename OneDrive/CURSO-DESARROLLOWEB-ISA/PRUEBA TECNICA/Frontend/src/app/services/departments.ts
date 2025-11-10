@@ -1,39 +1,33 @@
 // los servicios son lógica accesible desde cualquier parte de un proyecto
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Department} from "../interfaces/department";
+import { Department } from "../interfaces/department";
 import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class departmentService
-  
+export class DepartmentService {
+
   private _httpClient = inject(HttpClient);
-  private apiUrl = environment.appUrl; 
+  private apiUrl = environment.appUrl;
 
   // petición Post
-  postDepartment(departmentToCreate: Department)
-    return this._httpClient.post(this.apiUrl + '/products/crear', productToCreate);
+  postDepartment(departmentToCreate: Department) {
+    return this._httpClient.post(this.apiUrl + '/departments/crear', departmentToCreate);
   };
 
-  // petición Get
-  getProducts(){
-    return this._httpClient.get(this.apiUrl + '/products/mostrar');
+  getDepartments() {
+    return this._httpClient.get(this.apiUrl + '/departments/mostrar');
   };
 
-  // petición Put
-  putProduct(productToUpdate : Product, id:string){
-    // return this._httpClient.put(this.apiUrl + '/products/actualizar/' + id, productToCreate); //OPCIÓN 1
-    return this._httpClient.put (`${this.apiUrl})/products/actualizar/${id}`, productToUpdate);
+  putDepartment(departmentToUpdate: Department, id: string) {
+    return this._httpClient.put(`${this.apiUrl})/departments/actualizar${id}`, departmentToUpdate);
   };
 
-  // petición Delete
-  deleteProduct(id: string){
-    // return this._httpClient.delete(this.apiUrl + '/products/eliminar/' + id);
-     return this._httpClient.delete(this.apiUrl + '/products/eliminar/' , { params : {id}
-     }); //OPCIÓN 3
+  deleteDepartment(id: string) {
+    return this._httpClient.delete(this.apiUrl + '/departaments/eliminar' + id);
   };
-
 };
+

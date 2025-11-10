@@ -1,10 +1,9 @@
 export interface Department{
-    _id : string; //OBLIGATORIO
-    image : string; //URL de la imagén del producto
-    title : string; //OBLIGATORIO
-    description? : string; //NO OBLIGATORIO
-    price : number; //OBLIGATORIO
-    categories? : string;
+    _id : string; 
+    image : string; 
+    title : string; 
+    description? : string; 
+    price : number; 
     isAvailable? : boolean;
     date? : Date;
 }

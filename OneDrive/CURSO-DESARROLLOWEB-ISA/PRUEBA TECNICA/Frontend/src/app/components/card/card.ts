@@ -1,8 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
-// inject: para poder utilizar el servicio
-// 1. importar el servicio porque queremos hacer get de los productos
-import { ProductService } from '../../services/departments';
-import { Product } from '../../interfaces/department';
+import { DepartmentService } from '../../services/departments';
+import { Department } from '../../interfaces/department';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -15,42 +13,29 @@ import { environment } from '../../../environments/environment';
 
 export class Card implements OnInit {
 
-  // 1. La inyección de dependencias y declaración de variables
-  // inyectar nuestro servicio
-  // toca inyectar toda dependencia que no este en el mismo archivo
-  _productService = inject(ProductService);
-  // variable
-  // numero : number = 0; 
-  // texto :string = ''; 
-  // buleano : boolean = false;
-  allProducts: Product[] = []; // vamos a almacenar todos los productos de la base de datos
+  _DepartmentService = inject(DepartmentService);
+
+  allDepartments: Department[] = [];
   baseUrl : string = environment.appUrl;
 
 
-  showProducts() {
-    // 1. voy a hacer al petición GET 
-    // 2. voy a guardar losproductos en mi variable "allProducts"
-    // 3. voy a mostrarlos en mi navegador
+  showDepartments(){
 
-    this._productService.getProducts().subscribe({
-      // manejo de errores -> gestión de respuestas del back
+    this._DepartmentService.getDepartments().subscribe({
+
       next: (response : any) => {
-        this.allProducts = response.data;
-        console.log(this.allProducts);
-       }, //respuestas positivas del back
+        this.allDepartments = response.data;
+        console.log(this.allDepartments);
+       },
       error: (error : any) => { 
         console.error(error);
-      } //respuestas de error del back
+      } 
 
     })
-
-    // subscribe: abriera la puerta al proyecto y conectarse con su backend, traer la respuesta a su front y todo en html
-    // subscribe: permite acceder a la respuesta del backend
   }
 
   ngOnInit(): void {
-    // ejecute una acción al cargarse por primera vez en el navegador
-    this.showProducts();
+    this.showDepartments();
   }
 
 }
